@@ -1,0 +1,40 @@
+﻿@model IOrderedEnumerable<CompanySystem.DAL.PageSectionEntity>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PageSection</title>
+    <style>
+    </style>
+</head>
+<body>
+
+    
+    
+        <a class="button button1 add sec" asp-controller="PageSection" asp-action="Get">
+            <img src="https://static.thenounproject.com/png/953211-200.png" >
+        </a>
+    
+  
+            @foreach (var pc in Model)
+            {
+<div class="sec">
+
+            <span class="title">
+                @pc.Title
+                <a class="button button1 inbtn" asp-controller="PageSection" asp-action="Get" asp-route-id="@pc.Id">
+                    <img src="https://cdn-icons-png.flaticon.com/128/650/650143.png" >
+                </a>
+
+                <a class="button button1 inbtn" asp-controller="PageSection" asp-action="Delete" asp-route-id="@pc.Id"
+                 onclick="return confirm('Are you sure to delete ?');">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" >
+                </a>
+                </span>
+                    <p class="solid"> @pc.Description</p>
+
+        </div>
+    }
+   
+</body>
+</html>

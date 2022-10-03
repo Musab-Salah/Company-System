@@ -1,0 +1,53 @@
+﻿@model CompanySystem.DAL.PageSectionEntity
+@{
+    ViewBag.Title = "Create";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PageSection</title>
+</head>
+<body>
+    
+   
+
+    <form class="frm" asp-action="@ViewBag.Title">
+     
+       
+        <div class="valid" asp-validation-summary="All"></div>
+        <div >
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" >
+        </div>
+
+        <div >
+            <label asp-for="Description">Description</label>
+            <input class="des" asp-for="Description" >
+        </div>
+
+        <div >
+            <label asp-for="OrderNumber">OrderNumber</label>
+            <input asp-for="OrderNumber" >
+        </div>
+
+        <span >
+
+        <button type="submit" class="buttoncu buttoncu1 ">
+            Create
+        </button>
+        </span>
+        <span>
+            
+                <a class="buttoncu buttoncu1 " asp-controller="PageSection" asp-action="Index">
+                Cancel
+                </a>
+          
+        </span>
+               
+        
+       
+    </form>
+   
+   
+</body>
+</html>
