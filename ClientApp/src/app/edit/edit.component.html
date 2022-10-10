@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PageSection</title>
+</head>
+<body>
+     <form #form="ngForm" (ngSubmit)="Update()" class="frm" asp-action="Create">
+     
+        <div class="valid" asp-validation-summary="All"></div>
+        <div >
+            <label for="" >Title</label>
+            <input name="Title" type="text" [(ngModel)]="bo.title">
+        </div>
+
+        <div >
+            <label for="">Description</label>
+            <input maxlength="500" name="Description" type="text" class="des"  [(ngModel)]="bo.description">
+        </div>
+
+        <div >
+            <label for="">OrderNumber</label>
+            <input  name="OrderNumber" type="number" [(ngModel)]="bo.orderNumber" >
+        </div>
+
+        <span >
+
+        <button  class="buttoncu buttoncu1 ">
+            Ubdate
+        </button>
+        </span>
+        <span>
+            
+                <a class="buttoncu buttoncu1 " href="http://localhost:4200/Home">
+                Cancel
+                </a>
+          
+        </span>
+               
+        
+       
+    </form> 
+   
+   
+</body>
+</html>
