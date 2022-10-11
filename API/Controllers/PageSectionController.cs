@@ -59,12 +59,13 @@ namespace CompanySystem.API.Controllers
         [HttpPut]
         public IActionResult Update([FromBody] PageSectionBo bo, [FromRoute] int id)
         {
-            if (ModelState.IsValid)
+            var c = _manager.GetSectionById(id);
+            if (c.IsDeleted == false)
             {
-                var c = _manager.CreateUpdate(bo, id);
-                return Ok(c);
+                var cc = _manager.CreateUpdate(bo, id);
+                return Ok(cc);
             }
-            return BadRequest("nullinput");
+            return BadRequest("Nullinput Or Deleted");
         }
     }
 }

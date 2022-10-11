@@ -10,20 +10,22 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
  datalist :PageSectionBo[]=[];
+ isEmptyList: boolean=false ;
   constructor(private hdata:GetdatalistService, private router:Router ) { }
-  
- 
 
+  
+  
   ngOnInit(): void {
     
     this.hdata.getalldata().subscribe(
       result=>{
         this.datalist=result;
-        console.log(result);
+        this.isEmptyList = this.datalist.length == 0;
       }
     );
+    
   }
-
+  
   deletepg(id:string){
   this.hdata.deletePS(id)
   .subscribe(

@@ -41,7 +41,7 @@ namespace CompanySystem.BusinessLogic.PageSection
             pageContentbyid.Title = Page.Title;
             pageContentbyid.Description = Page.Description;
             pageContentbyid.OrderNumber = Page.OrderNumber;
-
+            pageContentbyid.IsDeleted = Page.IsDeleted;
             return pageContentbyid;
             }
             PageSectionEntity EBO=new PageSectionEntity();
@@ -58,6 +58,7 @@ namespace CompanySystem.BusinessLogic.PageSection
                 _context.SaveChanges();
                 return c;
             }
+
             _context.Update(c);
             _context.SaveChanges();
             return c;

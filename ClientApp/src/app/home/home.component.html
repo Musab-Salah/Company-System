@@ -5,12 +5,11 @@
         <style>
         </style>
          <script>
-           
           </script>
     </head>
-    <body>          
+    <body >  
     <div class="sec"  *ngFor="let data of datalist">
-                <h2 class="title">
+                <h2  class="title">
                     {{data.title}}
                    <span class="sp">
                     <a class="button button1 inbtn" [routerLink]="['/edit',data.id]">
@@ -25,5 +24,6 @@
                 </h2>
                         <p class="solid"> {{data.description}}</p>
             </div> 
+            <h1 *ngIf="isEmptyList">No Page Section</h1>  
     </body>
     </html>
