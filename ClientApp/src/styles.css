@@ -5,7 +5,7 @@ ul.nav {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    background-color: #2b2d42;
+    background-color: #606c38;
     height: 70px;
     font-family: cursive;
 }
@@ -70,8 +70,8 @@ li.tor{
 p.solid { /*for Dis*/
     padding: 5px;
     display: flex;
-    background-color: #B1A7A6;
-    color: #0d1635;
+    background-color: #dda15e;
+    color: #000814;
     border-radius: 10px;
     border: 2px solid transparent;
     outline: none;
@@ -90,7 +90,7 @@ p.solid { /*for Dis*/
 
 
 .button {
-    background-color: #8D99AE;
+    background-color: #fefae0;
     border: none;
     color: white;
     text-align: center;
@@ -111,7 +111,7 @@ p.solid { /*for Dis*/
 }
 
     .button1:hover {
-        background-color: #a8dadc;
+        background-color: #e9d8a6;
         color: white;
     }
 
@@ -142,7 +142,7 @@ margin-left: 80%;
 /*for index*/
 
 .buttoncu {
-    background-color: #8D99AE;
+    background-color: #fefae0;
     border: none;
     color: white;
     text-align: center;
@@ -161,7 +161,7 @@ margin-left: 80%;
 }
 
     .buttoncu1:hover {
-        background-color: #a8dadc;
+        background-color: #dda15e;
         color: white;
     }
 
@@ -177,7 +177,7 @@ label {
 }
 
 input {
-    background-color: #B1A7A6;
+    background-color: #dda15e;
     color: white;
     padding: 15px;
     border-radius: 10px;
