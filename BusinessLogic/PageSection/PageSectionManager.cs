@@ -37,7 +37,7 @@ namespace CompanySystem.BusinessLogic.PageSection
             if (id != 0) { 
             var Page = _context.PageSections.FirstOrDefault(x => x.Id == id);
             PageSectionEntity pageContentbyid = new PageSectionEntity();
-                //pageContentbyid.Id = Page.Id;
+                pageContentbyid.Id = Page.Id;
             pageContentbyid.Title = Page.Title;
             pageContentbyid.Description = Page.Description;
             pageContentbyid.OrderNumber = Page.OrderNumber;
@@ -54,15 +54,15 @@ namespace CompanySystem.BusinessLogic.PageSection
             var c = bo.MapBoToEntity();
             if (id == 0)
             {
-               
                 _context.Add(c);
                 _context.SaveChanges();
                 return c;
             }
-           ///// need repair
-            _context.Update(c);
-            _context.SaveChanges();
-            return c;
+                _context.Update(c);
+                _context.SaveChanges();
+                return c;
+            
+           
         }
     }
 }

@@ -129,6 +129,8 @@ p.solid { /*for Dis*/
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 20px;
     display: flex;
+    color: #283618;
+    
 }
 
 .inbtn {
@@ -166,7 +168,7 @@ margin-left: 80%;
     }
 
 label {
-    color: #212529;
+    color: #283618;
     display: flex;
     margin-top: 30px;
     font-family: "Epilogue", sans-serif;

@@ -59,8 +59,8 @@ namespace CompanySystem.API.Controllers
         [HttpPut]
         public IActionResult Update([FromBody] PageSectionBo bo, [FromRoute] int id)
         {
-            var c = _manager.GetSectionById(id);
-            if (c.IsDeleted == false)
+            
+            if (bo.IsDeleted == false)
             {
                 var cc = _manager.CreateUpdate(bo, id);
                 return Ok(cc);
