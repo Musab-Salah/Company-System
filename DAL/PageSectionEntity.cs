@@ -5,8 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CompanySystem.DAL
 {
-
-    
     [Table("PageSection")]
     public class PageSectionEntity : TrackableData
     {
