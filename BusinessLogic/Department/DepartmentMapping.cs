@@ -1,18 +1,18 @@
 ﻿using CompanySystem.DAL;
 
-namespace CompanySystem.BusinessLogic.PageSection
+namespace CompanySystem.BusinessLogic.Department
 {
     public static class EmployeeMapping
     {
-        public static PageSectionEntity? MapBoToEntity(this PageSectionBo bo)
+        public static DepartmentEntity? MapBoToEntity(this DepartmentBo bo)
         {
             if (bo == null) return null;
-            return new PageSectionEntity
+            return new DepartmentEntity
             {
                 Id = bo.Id,
-                Title = bo.Title,
+                Name = bo.Name,
+                Prefix = bo.Prefix,
                 Description = bo.Description,
-                OrderNumber = bo.OrderNumber,
                 CreatedBy = bo.CreatedBy,
                 CreatedOn = bo.CreatedOn,
                 ModifiedBy = bo.ModifiedBy,

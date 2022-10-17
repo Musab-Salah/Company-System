@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Department</title>
+</head>
+<body>
+      <form #form="ngForm" (ngSubmit)="Update()" class="frm" asp-action="Create">
+        <div class="valid" asp-validation-summary="All"></div>
+        <div >
+            <label for="" >Name</label>
+            <textarea required minlength="3" maxlength="50" type="text" name="Title" rows="1" cols="5"[(ngModel)]="bo.name"></textarea>
+        </div>
+        <div >
+            <label for="">Prefix</label>
+            <input maxlength="3" name="prefix" type="text" [(ngModel)]="bo.prefix" >
+        </div>
+        <div >
+            <label for="">Description</label>
+            <textarea required minlength="20" maxlength="500" name="Description" type="text" class="des" rows="1" cols="5" [(ngModel)]="bo.description"></textarea>
+        </div><span>
+        <button  class="buttoncu buttoncu1 ">
+            Update
+        </button>
+        </span>
+        <span><a class="buttoncu buttoncu1 " href="http://localhost:4200/HomeDepartment">
+                Cancel
+                </a>
+        </span>
+     </form> 
+   
+   
+</body>
+</html>

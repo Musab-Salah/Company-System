@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Department</title>
+        <style>
+        </style>
+         <script>
+          </script>
+    </head>
+    <body >  
+    <div class="sec"  *ngFor="let data of datalist">
+                <h2  class="title">
+                    {{data.name}}
+                   <span class="sp">
+                    <a class="button button1 inbtn" [routerLink]="['/UpdateDepartment',data.id]">
+                        <img src="https://cdn-icons-png.flaticon.com/128/650/650143.png" >
+                    </a>
+                    <a class="button button1 inbtn" 
+                    (click)="confirmAction(data.id);"
+                    >
+                        <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" >
+                    </a>
+                   </span>
+                </h2>
+                        <p class="solid"> {{data.description}}</p>
+            </div> 
+            <h1 *ngIf="isEmptyList">No Department</h1>  
+    </body>
+    </html>

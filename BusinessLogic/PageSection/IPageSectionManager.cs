@@ -5,13 +5,9 @@ namespace CompanySystem.BusinessLogic.PageSection
 {
     public interface IPageSectionManager
     {
-        List<PageSectionEntity> GetAll();
-
+        List<PageSectionEntity> GetAllPageSection();
         void DeleteSection (int id);
-
         PageSectionEntity GetSectionById(int id);
-
         PageSectionEntity CreateUpdate(PageSectionBo bo, int id = 0);
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using CompanySystem.Common;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,19 +9,19 @@ namespace CompanySystem.DAL
     {
         [Key]
         public int Id { get; set; }
-        [Unicode]
-        public string SN { get; set; }
+        public string? SN { get; set; }
         [Required]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
-        public string Password { get; set; }
-        public int ManagerId { get; set; } //need self rel
-        public EmployeeDetailsEntity EmployeeId { get; set; }
+        public string? FullName { get; set; }
+        [Required]
+        public string? Password { get; set; }
+        public int ManagerId { get; set; }
 
-        //public EmployeeEntity Manager { get; set; }
-       
+        public EmployeeDetailsEntity? EmployeeDetailsR { get; set; }
 
-       
+        public ICollection<EmployeeEntity>? Employee { get; set; }
+        public EmployeeEntity? Manger { get; set; }
 
     }
 }

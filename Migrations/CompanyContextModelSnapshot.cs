@@ -30,21 +30,36 @@ namespace CompanySystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Code")
-                        .IsRequired()
+                    b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prefix")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("DepartmentEntity");
+                    b.ToTable("Department");
                 });
 
             modelBuilder.Entity("CompanySystem.DAL.EmployeeDetailsEntity", b =>
@@ -67,10 +82,6 @@ namespace CompanySystem.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -92,8 +103,7 @@ namespace CompanySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId")
-                        .IsUnique();
+                    b.HasIndex("DepartmentId");
 
                     b.HasIndex("EmployeeId")
                         .IsUnique();
@@ -119,6 +129,10 @@ namespace CompanySystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -136,11 +150,11 @@ namespace CompanySystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SN")
-                        .IsRequired()
-                        .IsUnicode(true)
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ManagerId");
 
                     b.ToTable("Employee");
                 });
@@ -188,11 +202,11 @@ namespace CompanySystem.Migrations
                         {
                             Id = 1,
                             CreatedBy = "Musab",
-                            CreatedOn = new DateTime(2022, 10, 13, 19, 56, 24, 627, DateTimeKind.Local).AddTicks(2744),
+                            CreatedOn = new DateTime(2022, 10, 17, 15, 19, 5, 761, DateTimeKind.Local).AddTicks(6386),
                             Description = "First Description",
                             IsDeleted = false,
                             ModifiedBy = "SALAH",
-                            ModifiedOn = new DateTime(2022, 10, 13, 19, 56, 24, 627, DateTimeKind.Local).AddTicks(2781),
+                            ModifiedOn = new DateTime(2022, 10, 17, 15, 19, 5, 761, DateTimeKind.Local).AddTicks(6420),
                             OrderNumber = 0,
                             Title = "Musab"
                         },
@@ -200,11 +214,11 @@ namespace CompanySystem.Migrations
                         {
                             Id = 2,
                             CreatedBy = "Musab",
-                            CreatedOn = new DateTime(2022, 10, 13, 19, 56, 24, 627, DateTimeKind.Local).AddTicks(2785),
+                            CreatedOn = new DateTime(2022, 10, 17, 15, 19, 5, 761, DateTimeKind.Local).AddTicks(6423),
                             Description = "First Description",
                             IsDeleted = true,
                             ModifiedBy = "SALAH",
-                            ModifiedOn = new DateTime(2022, 10, 13, 19, 56, 24, 627, DateTimeKind.Local).AddTicks(2787),
+                            ModifiedOn = new DateTime(2022, 10, 17, 15, 19, 5, 761, DateTimeKind.Local).AddTicks(6425),
                             OrderNumber = 0,
                             Title = "test"
                         });
@@ -212,33 +226,44 @@ namespace CompanySystem.Migrations
 
             modelBuilder.Entity("CompanySystem.DAL.EmployeeDetailsEntity", b =>
                 {
-                    b.HasOne("CompanySystem.DAL.DepartmentEntity", "ForDepartmentId")
-                        .WithOne("DepartmentId")
-                        .HasForeignKey("CompanySystem.DAL.EmployeeDetailsEntity", "DepartmentId")
+                    b.HasOne("CompanySystem.DAL.DepartmentEntity", "DepartmentEntity")
+                        .WithMany("EmployeeDetailsForDepartment")
+                        .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CompanySystem.DAL.EmployeeEntity", "ForEmployeeId")
-                        .WithOne("EmployeeId")
+                    b.HasOne("CompanySystem.DAL.EmployeeEntity", "EmployeeEntity")
+                        .WithOne("EmployeeDetailsR")
                         .HasForeignKey("CompanySystem.DAL.EmployeeDetailsEntity", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ForDepartmentId");
+                    b.Navigation("DepartmentEntity");
 
-                    b.Navigation("ForEmployeeId");
-                });
-
-            modelBuilder.Entity("CompanySystem.DAL.DepartmentEntity", b =>
-                {
-                    b.Navigation("DepartmentId")
-                        .IsRequired();
+                    b.Navigation("EmployeeEntity");
                 });
 
             modelBuilder.Entity("CompanySystem.DAL.EmployeeEntity", b =>
                 {
-                    b.Navigation("EmployeeId")
+                    b.HasOne("CompanySystem.DAL.EmployeeEntity", "Manger")
+                        .WithMany("Employee")
+                        .HasForeignKey("ManagerId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
+
+                    b.Navigation("Manger");
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.DepartmentEntity", b =>
+                {
+                    b.Navigation("EmployeeDetailsForDepartment");
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.EmployeeEntity", b =>
+                {
+                    b.Navigation("Employee");
+
+                    b.Navigation("EmployeeDetailsR");
                 });
 #pragma warning restore 612, 618
         }

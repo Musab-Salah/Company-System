@@ -1,7 +1,8 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-
+using System.Diagnostics.Contracts;
 using System.Reflection.Metadata;
+using System.Security.Principal;
 
 namespace CompanySystem.DAL
 {
@@ -12,29 +13,32 @@ namespace CompanySystem.DAL
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<EmployeeEntity>()  
+                .HasOne<EmployeeDetailsEntity>(s => s.EmployeeDetailsR)
+                .WithOne(ad => ad.EmployeeEntity)
+                .HasForeignKey<EmployeeDetailsEntity>(ad => ad.EmployeeId);
+            
+            modelBuilder.Entity<EmployeeDetailsEntity>()
+                .HasOne<DepartmentEntity>(s => s.DepartmentEntity)
+                .WithMany(g => g.EmployeeDetailsForDepartment)
+                .HasForeignKey(s => s.DepartmentId);
+
             modelBuilder.Entity<EmployeeEntity>()
-           .HasOne(b => b.EmployeeId)
-           .WithOne(i => i.ForEmployeeId)
-           .HasForeignKey<EmployeeDetailsEntity>(b => b.EmployeeId);
+                .HasOne(a => a.Manger)
+                .WithMany()
+                .HasForeignKey(a => a.Id);
 
-            modelBuilder.Entity<DepartmentEntity>()
-          .HasOne(b => b.DepartmentId)
-          .WithOne(i => i.ForDepartmentId)
-          .HasForeignKey<EmployeeDetailsEntity>(b => b.DepartmentId);
-
-
-            //modelBuilder.Entity<EmployeeEntity>()
-            //.HasOne<EmployeeEntity>(s => s.Manager)
-            //.WithOne()
-            //.HasForeignKey<EmployeeEntity>(ad => ad.ManagerId);
-
-
-
+            modelBuilder.Entity<EmployeeEntity>()
+                .HasOne(a => a.Manger)
+                .WithMany(b => b.Employee)
+                .HasForeignKey(a => a.ManagerId);
+                
             modelBuilder.Seed();
         }
         public DbSet<PageSectionEntity> PageSections { get; set; }
         public DbSet<EmployeeEntity> Employees { get; set; }
         public DbSet<EmployeeDetailsEntity> EmployeeDetailss { get; set; }
+        public DbSet<DepartmentEntity> Departments { get; set; }
 
     }
 

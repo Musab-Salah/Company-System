@@ -1,7 +1,6 @@
-export interface PageSectionBo{
-   id:string;
-   title:string;
-   description:string;
-   orderNumber:number;
-    
+export interface PageSectionBo {
+   id: string;
+   title: string;
+   description: string;
+   orderNumber: number;
 }

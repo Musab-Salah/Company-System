@@ -1,35 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { PageSectionBo } from '../models/PageSectionBo.model';
 @Injectable({
   providedIn: 'root'
 })
-export class GetdatalistService {
-
+export class PageSectionService {
+  readonly url='http://localhost:5115/PageSection'
   constructor(private http: HttpClient) { }
-
-  public getalldata(){
-    let mydata = this.http.get<PageSectionBo[]>("http://localhost:5115/PageSection");
+  public getalldata() {
+    let mydata = this.http.get<PageSectionBo[]>(this.url);
     return mydata;
   }
-
-  addPS(bo:PageSectionBo) {
-    
-    return this.http.post<PageSectionBo>("http://localhost:5115/PageSection/Create", bo)
-  
+  addPS(bo: PageSectionBo) {
+    return this.http.post<PageSectionBo>(this.url +'/Create' , bo)
   }
-
-  deletePS(id:string){
-    return this.http.delete<PageSectionBo>("http://localhost:5115/PageSection/Delete"+'/'+id);
+  deletePS(id: string) {
+    return this.http.delete<PageSectionBo>(this.url + '/Delete' + '/' + id);
   }
-
-  getPS(id:string){
-  return  this.http.get<PageSectionBo>("http://localhost:5115/PageSection/Get"+'/'+id);
+  getPS(id: string) {
+    return this.http.get<PageSectionBo>(this.url + '/Get' + '/' + id);
   }
-
-  UpdatePS(id:string,bo:PageSectionBo){
- return this.http.put<PageSectionBo>("http://localhost:5115/PageSection/Update"+'/'+id,bo);
+  UpdatePS(id: string, bo: PageSectionBo) {
+    return this.http.put<PageSectionBo>(this.url + '/Update' + '/' + id, bo);
   }
-
 }

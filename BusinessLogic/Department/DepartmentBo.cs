@@ -1,11 +1,9 @@
 ﻿using CompanySystem.Common;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CompanySystem.DAL
+namespace CompanySystem.BusinessLogic.Department
 {
-    [Table("Department")]
-    public class DepartmentEntity : TrackableData
+    public class DepartmentBo : TrackableData
     {
         [Key]
         public int Id { get; set; }
@@ -15,10 +13,5 @@ namespace CompanySystem.DAL
         public string? Prefix { get; set; }
         [Required]
         public string? Description { get; set; }
-
-
-
-        public ICollection<EmployeeDetailsEntity>? EmployeeDetailsForDepartment { get; set; }
-        
     }
 }

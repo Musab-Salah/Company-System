@@ -4,28 +4,23 @@
     <title>PageSection</title>
 </head>
 <body>
-     <form #form="ngForm" (ngSubmit)="Update()" class="frm" asp-action="Create">
-     
+      <form #form="ngForm" (ngSubmit)="Update()" class="frm" asp-action="Create">
         <div class="valid" asp-validation-summary="All"></div>
         <div >
             <label for="" >Title</label>
-            <input maxlength="50" name="Title" type="text" [(ngModel)]="bo.title">
+            <textarea maxlength="50" type="text" name="Title" rows="1" cols="5"[(ngModel)]="bo.title"></textarea>
         </div>
-
         <div >
             <label for="">Description</label>
-            <input maxlength="500" name="Description" type="text" class="des"  [(ngModel)]="bo.description">
+            <textarea maxlength="500" name="Description" type="text" class="des" rows="1" cols="5" [(ngModel)]="bo.description"></textarea>
         </div>
-
         <div >
             <label for="">OrderNumber</label>
             <input  name="OrderNumber" type="number" [(ngModel)]="bo.orderNumber" >
         </div>
-
         <span >
-
         <button  class="buttoncu buttoncu1 ">
-            Ubdate
+            Update
         </button>
         </span>
         <span>
@@ -38,7 +33,7 @@
                
         
        
-    </form> 
+    </form>
    
    
 </body>

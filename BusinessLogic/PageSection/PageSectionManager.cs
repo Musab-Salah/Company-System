@@ -1,71 +1,52 @@
-﻿using CompanySystem.DAL;
+﻿using CompanySystem.Common;
+using CompanySystem.DAL;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompanySystem.BusinessLogic.PageSection
 {
     public class PageSectionManager : IPageSectionManager
     {
-
         protected readonly CompanyContext _context;
-
         public PageSectionManager(CompanyContext context)
         {
             _context = context;
         }
-
-        public List<PageSectionEntity> GetAll()
+        public List<PageSectionEntity>GetAllPageSection()
         {
-            var allpagecontent = _context.PageSections.Where(x => !x.IsDeleted).ToList();
-
-            return allpagecontent;
+            return(_context.PageSections.Where(entity => !entity.IsDeleted).ToList());
         }
-
         public void DeleteSection(int id)
-        {
-            var entity = _context.PageSections.FirstOrDefault(x => x.Id == id);
-
-            if (  entity.IsDeleted == false)
+        {  
+            var entity = _context.PageSections.FirstOrDefault(entity => entity.Id == id);
+            if(entity == null)
+                throw new Exception("Page Section Not Found");
+            if (!entity.IsDeleted)
             {
                 entity.IsDeleted = true;
                 _context.Update(entity);
                 _context.SaveChanges();
+                throw new Exception("Page Section Is Deleted");
             }
-
         }
         public PageSectionEntity GetSectionById(int id)
         {
-            if (id != 0) { 
-            var Page = _context.PageSections.FirstOrDefault(x => x.Id == id);
-            PageSectionEntity pageContentbyid = new PageSectionEntity();
-                pageContentbyid.Id = Page.Id;
-            pageContentbyid.Title = Page.Title;
-            pageContentbyid.Description = Page.Description;
-            pageContentbyid.OrderNumber = Page.OrderNumber;
-            pageContentbyid.IsDeleted = Page.IsDeleted;
-            return pageContentbyid;
-            }
-            PageSectionEntity EBO=new PageSectionEntity();
-            
-            return EBO;
+            var entity = _context.PageSections.FirstOrDefault(x => x.Id == id);
+            if (entity == null || id == 0)
+                throw new Exception("Page Section Not Found");
+            if (entity.IsDeleted)
+                throw new Exception("Page Section Is Deleted");
+            return entity;
         }
-
         public PageSectionEntity CreateUpdate(PageSectionBo bo, int id = 0)
         {
-            var c = bo.MapBoToEntity();
+            var entity = bo.MapBoToEntity();
             if (id == 0)
-            {
-                _context.Add(c);
-                _context.SaveChanges();
-                return c;
-            }
-                _context.Update(c);
-                _context.SaveChanges();
-                return c;
-            
-           
+               _context.Add(entity);
+            if (id != 0)
+                _context.Update(entity);
+            _context.SaveChanges();
+            return entity; 
         }
     }
 }
-
-
-
