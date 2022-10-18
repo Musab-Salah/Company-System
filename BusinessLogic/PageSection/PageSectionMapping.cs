@@ -2,10 +2,11 @@
 
 namespace CompanySystem.BusinessLogic.PageSection
 {
-    public static class PageSectionMapping
+    public static class EmployeeMapping
     {
-        public static PageSectionEntity MapBoToEntity(this PageSectionBo bo)
+        public static PageSectionEntity? MapBoToEntity(this PageSectionBo bo)
         {
+            if (bo == null) return null;
             return new PageSectionEntity
             {
                 Id = bo.Id,

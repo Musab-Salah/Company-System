@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+</head>
+<body>
+      <form #form="ngForm" (ngSubmit)="create()" class="frm" asp-action="Create">
+        <div class="valid" asp-validation-summary="All"></div>
+        <div >
+            <label for="" >Phone Number</label>
+            <input name="fullname" type="number" [(ngModel)]="bo.phonenumber" >
+        </div>
+        <div >
+            <select [(ngModel)]="bo.gender">
+                <option *ngFor="let o of options">
+                   {{o.name}}
+                </option>
+             </select>
+        </div>
+        <div >
+            <label for="">StartDate</label>
+            <input name="startdate" type="date" [(ngModel)]="bo.startdate" >
+        </div>
+        <select [(ngModel)]="selectedOption">
+            <option *ngFor="let o of datalist">
+               {{o.name}}
+            </option>
+         </select>
+        <span>
+        <button  class="buttoncu buttoncu1 ">
+            Create
+        </button>
+        </span>
+        <span><a class="buttoncu buttoncu1 " href="http://localhost:4200/HomeEmployee">
+                Cancel
+                </a>
+        </span>
+     </form> 
+
+     
+
+  <script>
+  
+  </script>
+</body>
+</html>

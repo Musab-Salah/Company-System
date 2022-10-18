@@ -1,3 +1,6 @@
+using CompanySystem.BusinessLogic.Department;
+using CompanySystem.BusinessLogic.Employee;
+using CompanySystem.BusinessLogic.EmployeeDetails;
 using CompanySystem.BusinessLogic.PageSection;
 using CompanySystem.DAL;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,8 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IPageSectionManager, PageSectionManager>(); /// THIS
-builder.Services.AddScoped<CompanyContext , CompanyContext>();    //// THIS
+builder.Services.AddScoped<IPageSectionManager, PageSectionManager>(); 
+builder.Services.AddScoped<IDepartmentManager, DepartmentManager>(); 
+builder.Services.AddScoped<IEmployeeManager, EmployeeManager>();
+builder.Services.AddScoped<IEmployeeDetailsManager, EmployeeDetailsManager>();
+builder.Services.AddScoped<CompanyContext , CompanyContext>();    
 
 builder.Services.AddDbContext<CompanyContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Connectionstring")));

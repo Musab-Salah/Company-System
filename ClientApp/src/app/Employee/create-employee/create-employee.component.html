@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee</title>
+</head>
+<body>
+      <form #form="ngForm" (ngSubmit)="next()" class="frm" asp-action="Create">
+        <div class="valid" asp-validation-summary="All"></div>
+        <div >
+            <label for="" >Full Name</label>
+            <input name="fullname" type="text" [(ngModel)]="bo.fullname" >
+        </div>
+        <div >
+            <label for="">Email</label>
+            <input  name="email" type="text" [(ngModel)]="bo.email" >
+        </div>
+        <div >
+            <label for="">Password</label>
+            <input name="password" type="password" [(ngModel)]="bo.password" >
+        </div>
+        <span>
+        <button  class="buttoncu buttoncu1 ">
+            Next
+        </button>
+        </span>
+        <span><a class="buttoncu buttoncu1 " href="http://localhost:4200/HomeEmployee">
+                Cancel
+                </a>
+        </span>
+     </form> 
+
+     
+
+  <script>
+  
+  </script>
+</body>
+</html>

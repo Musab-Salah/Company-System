@@ -22,6 +22,143 @@ namespace CompanySystem.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("CompanySystem.DAL.DepartmentEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prefix")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Department");
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.EmployeeDetailsEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
+
+                    b.ToTable("EmployeeDetails");
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.EmployeeEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ManagerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ManagerId");
+
+                    b.ToTable("Employee");
+                });
+
             modelBuilder.Entity("CompanySystem.DAL.PageSectionEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -65,11 +202,11 @@ namespace CompanySystem.Migrations
                         {
                             Id = 1,
                             CreatedBy = "Musab",
-                            CreatedOn = new DateTime(2022, 10, 9, 14, 35, 21, 177, DateTimeKind.Local).AddTicks(6239),
+                            CreatedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2533),
                             Description = "First Description",
                             IsDeleted = false,
                             ModifiedBy = "SALAH",
-                            ModifiedOn = new DateTime(2022, 10, 9, 14, 35, 21, 177, DateTimeKind.Local).AddTicks(6275),
+                            ModifiedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2566),
                             OrderNumber = 0,
                             Title = "Musab"
                         },
@@ -77,14 +214,56 @@ namespace CompanySystem.Migrations
                         {
                             Id = 2,
                             CreatedBy = "Musab",
-                            CreatedOn = new DateTime(2022, 10, 9, 14, 35, 21, 177, DateTimeKind.Local).AddTicks(6280),
+                            CreatedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2569),
                             Description = "First Description",
                             IsDeleted = true,
                             ModifiedBy = "SALAH",
-                            ModifiedOn = new DateTime(2022, 10, 9, 14, 35, 21, 177, DateTimeKind.Local).AddTicks(6282),
+                            ModifiedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2571),
                             OrderNumber = 0,
                             Title = "test"
                         });
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.EmployeeDetailsEntity", b =>
+                {
+                    b.HasOne("CompanySystem.DAL.DepartmentEntity", "DepartmentEntity")
+                        .WithMany("EmployeeDetailsForDepartment")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CompanySystem.DAL.EmployeeEntity", "EmployeeEntity")
+                        .WithOne("EmployeeDetailsR")
+                        .HasForeignKey("CompanySystem.DAL.EmployeeDetailsEntity", "EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DepartmentEntity");
+
+                    b.Navigation("EmployeeEntity");
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.EmployeeEntity", b =>
+                {
+                    b.HasOne("CompanySystem.DAL.EmployeeEntity", "Manger")
+                        .WithMany("Employee")
+                        .HasForeignKey("ManagerId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.Navigation("Manger");
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.DepartmentEntity", b =>
+                {
+                    b.Navigation("EmployeeDetailsForDepartment");
+                });
+
+            modelBuilder.Entity("CompanySystem.DAL.EmployeeEntity", b =>
+                {
+                    b.Navigation("Employee");
+
+                    b.Navigation("EmployeeDetailsR");
                 });
 #pragma warning restore 612, 618
         }

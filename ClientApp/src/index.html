@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <base href="/">
-    
-
-    
+    <base href="/"> 
 </head>
 <body>
- 
-   
-  
-    
-  
     <ul class="nav">
-        <li class="navli" ><a href="http://localhost:4200/Home"><i class="fa fa-home"></i>Home</a></li>
+        <li class="navli" ><a href="http://localhost:4200/Home"><i class="fa fa-home"></i>All Page Section</a></li>
+        <li  class ="navli"><a href="http://localhost:4200/HomeDepartment"><i class="fa fa-home"></i>All Department</a></li>
+        <li  class ="navli"><a href="http://localhost:4200/HomeEmployee"><i class="fa fa-home"></i>All Employee</a></li>
+        <li  class ="navli tor"><a href="http://localhost:4200/CreateEmployee"><i class="fa fa-plus"></i>Add Employee</a></li>
+        <li  class ="navli tor"><a href="http://localhost:4200/CreateDepartment"><i class="fa fa-plus"></i>Add Department</a></li>
         <li  class ="navli tor"><a href="http://localhost:4200/Create"><i class="fa fa-plus"></i>Add Section</a></li>
        
     </ul>
@@ -23,10 +18,8 @@
     <script>
         // Get the button
         let mybutton = document.getElementById("myBtn");
-
         // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function () { scrollFunction() };
-
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 mybutton.style.display = "block";
@@ -34,7 +27,6 @@
                 mybutton.style.display = "none";
             }
         }
-
         // When the user clicks on the button, scroll to the top of the document
         function topFunction() {
             document.body.scrollTop = 0;
@@ -43,8 +35,5 @@
     </script>
      <app-root></app-root>
      
-
 </body>
 </html>
-
-
