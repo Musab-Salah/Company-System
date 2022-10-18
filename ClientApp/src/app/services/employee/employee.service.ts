@@ -7,7 +7,7 @@ import { EmployeeBo } from '../../models/EmployeeBo.model';
 export class EmployeeService {
   readonly url='http://localhost:5115/Employee'
   constructor(private http: HttpClient) { }
-  
+
   public getallEmployee() {
     let mydata = this.http.get<EmployeeBo[]>(this.url);
     return mydata;
@@ -26,5 +26,5 @@ export class EmployeeService {
   }
   UpdateEmployee(id: string, bo: EmployeeBo) {
     return this.http.put<EmployeeBo>(this.url + '/Update' + '/' + id, bo);
-  } 
+  }
 }

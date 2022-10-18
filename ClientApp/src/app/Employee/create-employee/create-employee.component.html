@@ -4,7 +4,7 @@
     <title>Employee</title>
 </head>
 <body>
-      <form #form="ngForm" (ngSubmit)="next()" class="frm" asp-action="Create">
+      <form #form="ngForm" (ngSubmit)="create()" class="frm" asp-action="Create">
         <div class="valid" asp-validation-summary="All"></div>
         <div >
             <label for="" >Full Name</label>
@@ -27,12 +27,12 @@
                 Cancel
                 </a>
         </span>
-     </form> 
+     </form>
 
-     
+
 
   <script>
-  
+
   </script>
 </body>
 </html>
