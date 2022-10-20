@@ -9,8 +9,7 @@ export class PageSectionService {
   constructor(private http: HttpClient) { }
   
   public getalldata() {
-    let mydata = this.http.get<PageSectionBo[]>(this.url);
-    return mydata;
+   return this.http.get<PageSectionBo[]>(this.url);
   }
   addPS(bo: PageSectionBo) {
     return this.http.post<PageSectionBo>(this.url +'/Create' , bo)

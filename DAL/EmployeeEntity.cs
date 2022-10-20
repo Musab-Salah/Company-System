@@ -10,15 +10,17 @@ namespace CompanySystem.DAL
     {
         [Key]
         public int Id { get; set; }
+
+        [Unicode]
         public string? SN { get; set; }
         [Unicode]
         public string? Email { get; set; }
         [Required]
         public string? FullName { get; set; }
         [Required]
-        public string? Password { get; set; }
+        public string? Password  {get  ; set; }
         public int ManagerId { get; set; }
-
+        
         public EmployeeDetailsEntity? EmployeeDetailsR { get; set; }
 
         public ICollection<EmployeeEntity>? Employee { get; set; }

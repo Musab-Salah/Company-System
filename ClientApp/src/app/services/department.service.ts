@@ -9,8 +9,7 @@ export class DepartmentService {
   constructor(private http: HttpClient) { }
   
   public getallDepartment() {
-    let mydata = this.http.get<DepartmentBo[]>( this.url );
-    return mydata;
+    return this.http.get<DepartmentBo[]>( this.url );  
   }
   addDepartment(bo: DepartmentBo) {
     return this.http.post<DepartmentBo>(this.url + '/Create', bo)

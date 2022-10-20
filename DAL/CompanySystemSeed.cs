@@ -40,6 +40,22 @@ namespace CompanySystem.DAL
 
                 );
 
+            modelBuilder.Entity<EmployeeEntity>().HasData(
+
+                new EmployeeEntity
+                {
+                    Id = 1,
+                    ManagerId = 1,
+                  FullName = "Manger",
+                  Password = "dsf32dsf",
+                    CreatedBy = "Musab",
+                    CreatedOn = DateTime.Now,
+                    IsDeleted = false,
+                    ModifiedBy = "SALAH",
+                    ModifiedOn = DateTime.Now,
+                }
+                );
+
         }
 
     }

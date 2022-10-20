@@ -9,13 +9,9 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   public getallEmployee() {
-    let mydata = this.http.get<EmployeeBo[]>(this.url);
-    return mydata;
+   return this.http.get<EmployeeBo[]>(this.url);
   }
   addEmployee(bo: EmployeeBo)  {
-    // const header = new HttpHeaders()
-    // .set('Content-type', 'application/json');
-    // const body = JSON.stringify(bo);
    return this.http.post<EmployeeBo>(this.url +'/Create', bo)
   }
   deleteEmployee(id: string) {

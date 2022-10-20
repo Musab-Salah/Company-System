@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompanySystem.Migrations
 {
     [DbContext(typeof(CompanyContext))]
-    [Migration("20221018083934_654fds")]
-    partial class _654fds
+    [Migration("20221019072850_dsgf3a")]
+    partial class dsgf3a
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,7 +56,7 @@ namespace CompanySystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Prefix")
-                        .IsRequired()
+                        .IsUnicode(true)
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -128,7 +128,7 @@ namespace CompanySystem.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
+                        .IsUnicode(true)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
@@ -159,6 +159,20 @@ namespace CompanySystem.Migrations
                     b.HasIndex("ManagerId");
 
                     b.ToTable("Employee");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "Musab",
+                            CreatedOn = new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3273),
+                            FullName = "Manger",
+                            IsDeleted = false,
+                            ManagerId = 1,
+                            ModifiedBy = "SALAH",
+                            ModifiedOn = new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3276),
+                            Password = "dsf32dsf"
+                        });
                 });
 
             modelBuilder.Entity("CompanySystem.DAL.PageSectionEntity", b =>
@@ -204,11 +218,11 @@ namespace CompanySystem.Migrations
                         {
                             Id = 1,
                             CreatedBy = "Musab",
-                            CreatedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2533),
+                            CreatedOn = new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3114),
                             Description = "First Description",
                             IsDeleted = false,
                             ModifiedBy = "SALAH",
-                            ModifiedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2566),
+                            ModifiedOn = new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3152),
                             OrderNumber = 0,
                             Title = "Musab"
                         },
@@ -216,11 +230,11 @@ namespace CompanySystem.Migrations
                         {
                             Id = 2,
                             CreatedBy = "Musab",
-                            CreatedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2569),
+                            CreatedOn = new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3155),
                             Description = "First Description",
                             IsDeleted = true,
                             ModifiedBy = "SALAH",
-                            ModifiedOn = new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2571),
+                            ModifiedOn = new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3157),
                             OrderNumber = 0,
                             Title = "test"
                         });

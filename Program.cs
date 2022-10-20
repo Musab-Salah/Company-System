@@ -6,8 +6,7 @@ using CompanySystem.DAL;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-
-
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +17,11 @@ builder.Services.AddScoped<IDepartmentManager, DepartmentManager>();
 builder.Services.AddScoped<IEmployeeManager, EmployeeManager>();
 builder.Services.AddScoped<IEmployeeDetailsManager, EmployeeDetailsManager>();
 builder.Services.AddScoped<CompanyContext , CompanyContext>();    
-
 builder.Services.AddDbContext<CompanyContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Connectionstring")));
-
+//solve SerializerCycleDetected(int maxDepth)
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddCors((setup) =>
 {
     setup.AddPolicy("defult", (options) =>

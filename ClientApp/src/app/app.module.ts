@@ -11,7 +11,10 @@ import { CreateDepartmentComponent } from './Department/create-department/create
 import { UpdateDepartmentComponent } from './Department/update-department/update-department.component';
 import { HomeDepartmentComponent } from './Department/home-department/home-department.component';
 import { CreateEmployeeComponent } from './Employee/create-employee/create-employee.component';
-import { CreateEmployeeDetailsComponent } from './Employee/create-employee/EmployeeDetails/create-employee-details/create-employee-details.component';
+import { HomeEmployeeComponent } from './Employee/home-employee/home-employee.component';
+import { UpdateEmployeeComponent } from './Employee/update-employee/update-employee.component';
+import { CreateEmployeeDetailsComponent } from './Employee/EmployeeDetails/create-employee-details/create-employee-details.component';
+import { UpdateEmployeeDetailsComponent } from './Employee/EmployeeDetails/update-employee-details/update-employee-details.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { CreateEmployeeDetailsComponent } from './Employee/create-employee/Emplo
     UpdateDepartmentComponent,
     HomeDepartmentComponent,
     CreateEmployeeComponent,
-    CreateEmployeeDetailsComponent, 
+    HomeEmployeeComponent,
+    UpdateEmployeeComponent,
+    CreateEmployeeDetailsComponent,
+    UpdateEmployeeDetailsComponent, 
     
   ],
   imports: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeBo } from 'src/app/models/EmployeeBo.model';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 @Component({
@@ -12,20 +12,30 @@ export class CreateEmployeeComponent implements OnInit {
   bo: EmployeeBo = {
     id : '0',
     sn: '',
-    fullname:'',
+    fullName:'',
     email: '',
     password: '',
-    managerid: 0
+    managerid: '1'
   }
-  // selectedOption: string='';
-  constructor(private hdata: EmployeeService, private router: Router) { }
+  boe: EmployeeBo = {
+    id: '',
+    sn: '',
+    fullName: '',
+    email: '',
+    password: '',
+    managerid: '0'
+  }
+  selectedOption: string='';
+  constructor(private route: ActivatedRoute,private hdata: EmployeeService, private router: Router) { }
   ngOnInit(): void {
   }
   create() {
+    
     this.hdata.addEmployee(this.bo)
       .subscribe(
         response => {
-          this.router.navigate(['HomeEmployeeDetails'])
+          this.boe= response;
         });
   }
+ 
 }

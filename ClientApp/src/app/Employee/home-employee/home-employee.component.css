@@ -1,0 +1,66 @@
+p.solid {
+    /*for Dis*/
+    padding: 5px;
+    display: flex;
+    background-color: #dda15e;
+    color: #000814;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+
+}
+.sec {
+    /*for block section*/
+    margin: auto;
+    width: 80%;
+    border-bottom: 3px solid #8d99ae;
+    padding: 10px;
+}
+
+.button {
+    background-color: #fefae0;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 19px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 3px;
+    width: 15px;
+    height: 15px;
+}
+.button1 {
+    color: black;
+}
+.button1:hover {
+    background-color: #e9d8a6;
+    color: white;
+}
+.add {
+    display: flex;
+    margin-right: 30%;
+    float: right;
+    margin-top: 5%;
+    width: 30px;
+    height: 30px;
+}
+
+.title {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 20px;
+    display: flex;
+    color: #283618;
+}
+.inbtn {
+    margin-left: 1%;
+}
+span.sp {
+    display: flex;
+    margin-left: 80%;
+}
+h1{
+    text-align: center;
+}

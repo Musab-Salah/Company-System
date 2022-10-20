@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompanySystem.Migrations
 {
-    public partial class _654fds : Migration
+    public partial class dsgf3a : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace CompanySystem.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Prefix = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prefix = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -36,7 +36,7 @@ namespace CompanySystem.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SN = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ManagerId = table.Column<int>(type: "int", nullable: false),
@@ -111,14 +111,19 @@ namespace CompanySystem.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "PageSection",
-                columns: new[] { "Id", "CreatedBy", "CreatedOn", "Description", "IsDeleted", "ModifiedBy", "ModifiedOn", "OrderNumber", "Title" },
-                values: new object[] { 1, "Musab", new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2533), "First Description", false, "SALAH", new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2566), 0, "Musab" });
+                table: "Employee",
+                columns: new[] { "Id", "CreatedBy", "CreatedOn", "Email", "FullName", "IsDeleted", "ManagerId", "ModifiedBy", "ModifiedOn", "Password", "SN" },
+                values: new object[] { 1, "Musab", new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3273), null, "Manger", false, 1, "SALAH", new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3276), "dsf32dsf", null });
 
             migrationBuilder.InsertData(
                 table: "PageSection",
                 columns: new[] { "Id", "CreatedBy", "CreatedOn", "Description", "IsDeleted", "ModifiedBy", "ModifiedOn", "OrderNumber", "Title" },
-                values: new object[] { 2, "Musab", new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2569), "First Description", true, "SALAH", new DateTime(2022, 10, 18, 11, 39, 34, 622, DateTimeKind.Local).AddTicks(2571), 0, "test" });
+                values: new object[] { 1, "Musab", new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3114), "First Description", false, "SALAH", new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3152), 0, "Musab" });
+
+            migrationBuilder.InsertData(
+                table: "PageSection",
+                columns: new[] { "Id", "CreatedBy", "CreatedOn", "Description", "IsDeleted", "ModifiedBy", "ModifiedOn", "OrderNumber", "Title" },
+                values: new object[] { 2, "Musab", new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3155), "First Description", true, "SALAH", new DateTime(2022, 10, 19, 10, 28, 50, 133, DateTimeKind.Local).AddTicks(3157), 0, "test" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employee_ManagerId",

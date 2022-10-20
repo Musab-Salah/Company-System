@@ -8,7 +8,8 @@ namespace CompanySystem.BusinessLogic.Employee
     {
         [Key]
         public int Id { get; set; }
-
+        
+        [Unicode]
         public string? SN { get; set; }
 
         [Required]

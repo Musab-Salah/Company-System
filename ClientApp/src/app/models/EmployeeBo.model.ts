@@ -1,8 +1,8 @@
 export interface EmployeeBo {
    id: string;
    sn:string;
-   fullname:string;
+   fullName:string;
    email: string;
    password: string;
-   managerid: number;
+   managerid: string;
 }

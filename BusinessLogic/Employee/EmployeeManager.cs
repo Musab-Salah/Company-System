@@ -12,7 +12,7 @@ namespace CompanySystem.BusinessLogic.Employee
         }
         public List<EmployeeEntity> GetAllEmployee()
         {
-            return (_context.Employees.Where(entity => !entity.IsDeleted).ToList());
+           return (_context.Employees.Where(entity => !entity.IsDeleted).ToList()); 
         }
         public void DeleteEmployee(int id)
         {
@@ -40,6 +40,7 @@ namespace CompanySystem.BusinessLogic.Employee
         {
             var entity = bo.MapBoToEntity();
             entity.Password = Security.Encrypt_Password(entity.Password);
+            
             //entity.SN = /* Add Prefix + */ "-" + SerialNoGenerator.RandomString();
             if (id == 0)
                 _context.Add(entity);

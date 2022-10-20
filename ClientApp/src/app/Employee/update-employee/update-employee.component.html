@@ -4,7 +4,7 @@
     <title>Employee</title>
 </head>
 <body>
-      <form #form="ngForm" (ngSubmit)="create()" class="frm" asp-action="Create">
+      <form #form="ngForm" (ngSubmit)="Update()" class="frm" asp-action="Create">
         <div class="valid" asp-validation-summary="All"></div>
         <div >
             <label for="" >Full Name</label>
@@ -19,21 +19,20 @@
             <input name="password" type="password" [(ngModel)]="bo.password" >
         </div>
         <span>
-          <button id="button1" style="display:block;" onclick="document.getElementById('button2').style.display = 'block';  " class="buttoncu buttoncu1 "  >
-            Create Employee
-          </button> 
+        <button  class="buttoncu buttoncu1 ">
+            Update
+        </button>
         </span>
-        <span>
-         <a id="button2" style="display:none;" class="adddetails" [routerLink]="['/CreateEmployeeDetails',boe.id]">
-            Add Details 
-        </a>
-          
-      </span>
-        <span><a class="buttoncu buttoncu1 " href="http://localhost:4200/HomeEmployee" >
+        <span><a class="buttoncu buttoncu1 " href="http://localhost:4200/HomeEmployee">
                 Cancel
                 </a>
         </span>
      </form>
-     
+
+
+
+  <script>
+
+  </script>
 </body>
 </html>

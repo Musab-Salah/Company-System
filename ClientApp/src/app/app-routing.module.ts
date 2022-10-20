@@ -7,7 +7,9 @@ import { HomeDepartmentComponent } from './Department/home-department/home-depar
 import { CreateDepartmentComponent } from './Department/create-department/create-department.component';
 import { UpdateDepartmentComponent } from './Department/update-department/update-department.component';
 import { CreateEmployeeComponent } from './Employee/create-employee/create-employee.component';
-import { CreateEmployeeDetailsComponent } from './Employee/create-employee/EmployeeDetails/create-employee-details/create-employee-details.component';
+import { HomeEmployeeComponent } from './Employee/home-employee/home-employee.component';
+import { UpdateEmployeeComponent } from './Employee/update-employee/update-employee.component';
+import { CreateEmployeeDetailsComponent } from './Employee/EmployeeDetails/create-employee-details/create-employee-details.component';
 const routes: Routes = [
   { path: 'Create', component: CreateComponent },
   { path: 'Home', component: HomeComponent },
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'HomeDepartment', component: HomeDepartmentComponent },
   { path: 'UpdateDepartment/:id', component: UpdateDepartmentComponent },
   { path: 'CreateEmployee', component: CreateEmployeeComponent },
-  { path: 'CreateEmployeeDetails', component: CreateEmployeeDetailsComponent }
+  { path: 'HomeEmployee', component: HomeEmployeeComponent },
+  { path: 'UpdateEmployee/:id', component: UpdateEmployeeComponent },
+  { path: 'CreateEmployeeDetails/:id', component: CreateEmployeeDetailsComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
