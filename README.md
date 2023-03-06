@@ -3,4 +3,5 @@ This project was for the training, I built the project from scratch, I applied a
 
 ##TECHNOLOGIES:
 Backend: ASP.NET, C#, SQL, Entity Framework.
+
 Frontend: HTML, CSS, TypeScript (Angular)
